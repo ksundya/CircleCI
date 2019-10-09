@@ -7,7 +7,7 @@ jobs:
   build:
     executor:
       name: win/vs2019
-      shell: powershell.exe
+      shell: bash.exe
     steps:
       - checkout
       - restore_cache:
@@ -25,6 +25,6 @@ jobs:
           command: dotnet.exe publish -c Release -r win10-x64
       - run:
           name: "Test the executable"
-          command: .\bin\Debug\netcoreapp3.0\CircleCIProject.exe
+          command: .\bin\Release\netcoreapp3.0\win10-x64\publish\CircleCIProject.exe
       - store_artifacts:
-          path: .\bin\Debug\netcoreapp3.0\CircleCIProject.exe
+          path: .\bin\Release\netcoreapp3.0\win10-x64\publish\CircleCIProject.exe
